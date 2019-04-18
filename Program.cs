@@ -1,9 +1,9 @@
 ﻿/*
     1. Add the required classes to make the following code compile.
-    HINT: Use a Dictionary in the AddressBook class to store Contacts. The key should be the contact's email address.
+       HINT: Use a Dictionary in the AddressBook class to store Contacts. The key should be the contact's email address.
     2. Run the program and observe the exception.
     3. Add try/catch blocks in the appropriate locations to prevent the program from crashing
-        Print meaningful error messages in the catch blocks.
+       Print meaningful error messages in the catch blocks.
 */
 
 using System;
@@ -35,13 +35,13 @@ namespace TryCatch
 
 
             // Create an AddressBook and add Contacts to it
-            AddressBook taco = new AddressBook();
-            taco.AddContact(Abbey);
-            taco.AddContact(Rupert);
-            taco.AddContact(Katerina);
+            AddressBook tacoAddressBook = new AddressBook();
+            tacoAddressBook.AddContact(Abbey);
+            tacoAddressBook.AddContact(Rupert);
+            tacoAddressBook.AddContact(Katerina);
 
             // Try to add a contact a second time
-            taco.AddContact(Abbey);
+            tacoAddressBook.AddContact(Abbey);
 
 
             // Create a list of emails that match our Contacts
@@ -52,6 +52,7 @@ namespace TryCatch
             };
 
             // Insert an email that does NOT match a Contact (insert method)
+            //Takes the argument of index you want to insert and the list item value
             emails.Insert(3, "notallowedbadboy@email.com");
 
 
@@ -60,7 +61,7 @@ namespace TryCatch
             {
                 try
                 {
-                    Contact contact = taco.GetByEmail(email);
+                    Contact contact = tacoAddressBook.GetByEmail(email);
                     Console.WriteLine("----------------------------");
                     Console.WriteLine($"Name: {contact.FullName}");
                     Console.WriteLine($"Email: {contact.Email}");
@@ -68,13 +69,13 @@ namespace TryCatch
                 }
                 catch (KeyNotFoundException ex)
                 {
-                    Console.WriteLine($@"
-----------------------------
-Unable to find {email} in Address Book.
-----------------------------
-Developer ERROR Message: {ex.Message}
-"
-);
+                                    Console.WriteLine($@"
+                ----------------------------
+                Unable to find {email} in Address Book.
+                ----------------------------
+                Developer ERROR Message: {ex.Message}
+                "
+                );
                 }
             }
         }
